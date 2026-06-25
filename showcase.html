@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpaceDucki - Home</title>
+    <title>SpaceDucki - Showcase</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,9 +14,9 @@
         <img src="https://raw.githubusercontent.com/Mauvi020/Mauvi.Downloads-/refs/heads/main/2image.png" alt="Logo">
     </a>
     <nav>
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html">Home</a>
         <a href="projects.html">Projekte</a>
-        <a href="showcase.html">Showcase</a>
+        <a href="showcase.html" class="active">Showcase</a>
         <a href="club.html">Club-Beitritt</a>
         <a href="members.html">Mitglieder</a>
         <a href="support.html">Support & Kontakt</a>
@@ -24,33 +24,27 @@
 </header>
 
 <div class="page">
-    <section class="hero">
-        <img class="hero-logo" src="https://raw.githubusercontent.com/Mauvi020/Mauvi.Downloads-/refs/heads/main/2image.png" alt="Logo">
-        <h1>Building <span>SpaceDucki</span></h1>
-        <p>
-            Hi, ich bin Mauvi020. Mit SpaceDucki baue ich meine eigene Hardware-Brand auf.<br>
-            ESP32 Projekte, DIY Elektronik, Makro-Pads, Handhelds und PCB Experimente.
-        </p>
-        <a class="btn primary" href="club.html">Tritt dem Club bei</a>
-    </section>
-
     <section class="section">
-        <h2>Über SpaceDucki</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>ESP32 Projekte</h3>
-                <p>Makro-Pads, Handhelds und kreative Geräte auf ESP32 Basis.</p>
-            </div>
-            <div class="card">
-                <h3>DIY PCB</h3>
-                <p>Experimentelle Leiterplatten und neue Bauweisen.</p>
-            </div>
-            <div class="card">
-                <h3>Lernen</h3>
-                <p>Jeder Prototyp bringt neue Skills und Ideen.</p>
+        <h2>Produkt Showcase</h2>
+        <p style="text-align: center; color: var(--muted); margin-bottom: 40px;">Hier siehst du meine neuesten Prototypen und fertigen Builds im Detail. Klicke auf ein Bild, um es zu vergrößern.</p>
+        
+        <div class="showcase-grid">
+            <div class="showcase-item">
+                <div class="showcase-image">
+                    <img src="bilder/IMG_0078.jpeg" alt="SpaceDucki Pad v1" onclick="openLightbox(this.src)">
+                </div>
+                <div class="showcase-content">
+                    <h3>SpaceDucki Pad v1</h3>
+                    <p>Der erste Design-Entwurf vom DuckiPad v1.</p>
+                </div>
             </div>
         </div>
     </section>
+</div>
+
+<div id="lightboxOverlay" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightboxImg" src="" alt="Großansicht">
 </div>
 
 <footer id="footer">
@@ -67,6 +61,19 @@
         if (window.scrollY > 20) { header.classList.add("scrolled"); } 
         else { header.classList.remove("scrolled"); }
     });
+
+    const lightbox = document.getElementById('lightboxOverlay');
+    const lightboxImg = document.getElementById('lightboxImg');
+
+    function openLightbox(imageSrc) {
+        lightboxImg.src = imageSrc;
+        lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        setTimeout(() => { lightboxImg.src = ""; }, 300);
+    }
 </script>
 </body>
 </html>
