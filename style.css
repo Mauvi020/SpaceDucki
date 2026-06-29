@@ -1,20 +1,25 @@
-:root {
-    --bg: #0b1020;
-    --card: #141b34;
-    --accent: #4ea1ff;
-    --accent2: #ffcc4d;
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg: #1e0b1d;           /* Sehr dunkles Retro-Violett aus deinem Logo-Hintergrund */
+    --card: #2d132c;         /* Hellerer Beerenton für die Boxen */
+    --accent: #ff4b5c;       /* Knalliges Retro-Rot */
+    --accent2: #e2b47b;      /* Der Gelb/Hellbraun-Mix aus den Buchstaben */
     --text: #f5f7fa;
-    --muted: #a8b3c7;
+    --muted: #a3829e;
     --discord: #5865F2;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    /* Verhindert weiche Kanten bei Bildern für echten Pixel-Look */
+    image-rendering: pixelated; 
 }
 
-body {
+body{
     font-family: 'Nunito', sans-serif;
     background: var(--bg);
     color: var(--text);
@@ -24,65 +29,66 @@ body {
     min-height: 100vh;
 }
 
-/* ANIMATION */
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* HEADER */
-header {
+/* HEADER - RETRO STYLE */
+header{
     position: sticky;
     top: 0;
     z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 10%;
+    padding: 18px 8%;
     transition: .3s;
     background: var(--bg);
+    border-bottom: 4px solid rgba(245, 247, 252, 0.1);
 }
 
-header.scrolled {
-    background: rgba(11, 16, 32, .75);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, .08);
+header.scrolled{
+    background: rgba(30, 11, 29, 0.9);
+    backdrop-filter: blur(4px);
+    border-bottom: 4px solid var(--accent);
 }
 
-/* LOGO HEADER */
-.logo img {
-    height: 60px;
+.logo img{
+    height: 55px;
     transition: .3s;
     cursor: pointer;
 }
 
-header.scrolled .logo img {
-    height: 42px;
+header.scrolled .logo img{
+    height: 40px;
 }
 
-/* NAV */
-nav a {
+/* NAVIGATION */
+nav a{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.65rem; /* Pixel-Schriften müssen etwas kleiner sein */
     color: var(--text);
     text-decoration: none;
     margin-left: 20px;
-    font-weight: 600;
     transition: .2s;
     cursor: pointer;
+    letter-spacing: 0.5px;
 }
 
-nav a:hover, nav a.active {
+nav a:hover, nav a.active{
     color: var(--accent2);
+    text-shadow: 2px 2px 0px var(--accent);
 }
 
 /* PAGES SYSTEM */
 .page {
-    animation: fadeUp 0.5s ease forwards;
+    display: none;
     flex: 1;
 }
 
-/* HERO */
-.hero {
-    min-height: 75vh;
+.page.active {
+    display: block;
+}
+
+/* HERO SECTION */
+.hero{
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -91,99 +97,115 @@ nav a:hover, nav a.active {
     padding: 40px;
 }
 
-.hero-logo {
-    height: 170px;
-    margin-bottom: 20px;
+.hero-logo{
+    height: 150px;
+    margin-bottom: 25px;
 }
 
-.hero h1 {
-    font-size: 4rem;
-    margin-bottom: 20px;
+.hero h1{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2.2rem;
+    line-height: 1.4;
+    margin-bottom: 25px;
+    color: var(--text);
 }
 
-.hero h1 span {
+.hero h1 span{
     color: var(--accent2);
+    text-shadow: 4px 4px 0px var(--accent);
 }
 
-.hero p {
-    max-width: 800px;
+.hero p{
+    max-width: 750px;
     color: var(--muted);
     line-height: 1.8;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     margin-bottom: 35px;
 }
 
-/* BUTTONS */
-.btn {
+/* KANTIGE PIXEL-BUTTONS */
+.btn{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.75rem;
     display: inline-block;
-    padding: 14px 28px;
-    border-radius: 999px;
+    padding: 16px 28px;
     text-decoration: none;
-    font-weight: 700;
-    transition: .25s;
+    transition: .15s;
     cursor: pointer;
-    border: none;
+    border: 4px solid #ffffff;
+    box-shadow: 4px 4px 0px #000000;
 }
 
-.primary {
+.primary{
     background: var(--accent);
     color: white;
+    border-color: var(--text);
 }
 
-.primary:hover {
-    transform: translateY(-3px);
+.primary:hover{
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #000000;
+    background: var(--accent2);
+    color: var(--bg);
 }
 
 .discord-btn {
     background: var(--discord);
     color: white;
+    border-color: var(--text);
 }
 
 .discord-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #000000;
 }
 
-/* SECTIONS / PAGES */
-.section {
-    padding: 40px 10% 80px 10%;
+/* SECTIONS & INFOKARTEN */
+.section{
+    padding: 60px 10% 80px 10%;
 }
 
-.section h2 {
+.section h2{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.6rem;
     text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: var(--text);
 }
 
-.cards {
+.cards{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 25px;
 }
 
-.card {
+.card{
     background: var(--card);
     padding: 30px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, .05);
-    transition: .3s;
+    border: 4px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
+    transition: .2s;
 }
 
-.card:hover {
-    transform: translateY(-5px);
+.card:hover{
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 6px 10px 0px rgba(0, 0, 0, 0.4);
 }
 
-.card h3 {
-    margin-bottom: 12px;
+.card h3{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
     color: var(--accent2);
 }
 
-.card p {
+.card p{
     color: var(--muted);
     line-height: 1.7;
 }
 
-/* SHOWCASE STYLES */
+/* SHOWCASE PIXEL-BOXEN */
 .showcase-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -193,28 +215,30 @@ nav a:hover, nav a.active {
 
 .showcase-item {
     background: var(--card);
-    border-radius: 20px;
+    border: 4px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, .05);
-    transition: .3s;
+    transition: .2s;
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
 .showcase-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
+    border-color: var(--accent2);
 }
 
 .showcase-image {
     width: 100%;
-    background: #0f152a;
+    background: #170716;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     overflow: hidden;
-    padding: 10px;
+    padding: 15px;
+    border-bottom: 4px solid rgba(255, 255, 255, 0.05);
 }
 
 .showcase-image img {
@@ -222,48 +246,46 @@ nav a:hover, nav a.active {
     height: auto;
     max-height: 280px;
     object-fit: contain;
-    border-radius: 12px;
     transition: transform 0.2s;
 }
 
 .showcase-image img:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
 }
 
 .showcase-content {
     padding: 25px;
     background: var(--card);
     flex-grow: 1;
-    border-top: 1px solid rgba(255, 255, 255, .03);
 }
 
 .showcase-content h3 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9rem;
     color: var(--accent2);
-    margin-bottom: 10px;
-    font-size: 1.4rem;
+    margin-bottom: 12px;
 }
 
 .showcase-content p {
     color: var(--muted);
     line-height: 1.6;
-    font-size: 1rem;
 }
 
-/* MEMBER GRID STYLES */
+/* MITGLIEDER GRID */
 .member-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+    gap: 25px;
     margin-top: 20px;
 }
 
 .member-card {
     background: var(--card);
-    border: 1px solid rgba(255, 255, 255, .05);
-    border-radius: 20px;
+    border: 4px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
     padding: 25px;
     text-align: center;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .member-card:hover {
@@ -272,16 +294,15 @@ nav a:hover, nav a.active {
 }
 
 .member-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: #1e284a;
+    width: 84px;
+    height: 84px;
+    background: #170716;
     margin: 0 auto 15px auto;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    border: 2px solid var(--accent2);
+    border: 4px solid var(--accent2);
 }
 
 .member-avatar img {
@@ -296,14 +317,14 @@ nav a:hover, nav a.active {
 }
 
 .member-role {
-    font-size: 0.9rem;
-    color: var(--accent2);
-    font-weight: 700;
-    text-transform: uppercase;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.55rem;
+    color: var(--accent);
+    margin-top: 8px;
     letter-spacing: 1px;
 }
 
-/* LIGHTBOX OVERLAY */
+/* LIGHTBOX (GROSSANSICHT) */
 .lightbox {
     display: none;
     position: fixed;
@@ -312,8 +333,8 @@ nav a:hover, nav a.active {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(5, 8, 18, 0.95);
-    backdrop-filter: blur(8px);
+    background: rgba(15, 6, 14, 0.96);
+    backdrop-filter: blur(4px);
     justify-content: center;
     align-items: center;
     opacity: 0;
@@ -327,16 +348,10 @@ nav a:hover, nav a.active {
 
 .lightbox img {
     max-width: 90%;
-    max-height: 85%;
+    max-height: 80%;
     object-fit: contain;
-    border-radius: 10px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-    transform: scale(0.9);
-    transition: transform 0.3s ease;
-}
-
-.lightbox.active img {
-    transform: scale(1);
+    border: 4px solid var(--accent2);
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.7);
 }
 
 .lightbox-close {
@@ -344,32 +359,38 @@ nav a:hover, nav a.active {
     top: 25px;
     right: 35px;
     color: var(--text);
-    font-size: 2.5rem;
-    font-weight: bold;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
     cursor: pointer;
     transition: 0.2s;
 }
 
 .lightbox-close:hover {
-    color: var(--accent2);
+    color: var(--accent);
 }
 
-/* FOOTER */
-footer {
-    padding: 40px 20px;
+/* RETRO FOOTER */
+footer{
+    padding: 50px 20px;
     text-align: center;
     color: var(--muted);
-    border-top: 1px solid rgba(255, 255, 255, .05);
-    background: var(--bg);
+    border-top: 4px solid rgba(255, 255, 255, 0.05);
+    background: #150614;
 }
 
-footer img {
-    height: 40px;
-    margin-bottom: 10px;
-    opacity: 0.9;
+footer img{
+    height: 45px;
+    margin-bottom: 15px;
 }
 
-.small {
-    font-size: .95rem;
+footer strong {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    color: var(--text);
+}
+
+.small{
+    font-size: .9rem;
     margin-top: 10px;
 }
+</style>
